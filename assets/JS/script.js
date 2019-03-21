@@ -16,18 +16,20 @@
 */
 
 $(document).ready(function() {
+  var correct = 0;
+  var wrong = 0;
   //   var questions;
 
   var questions = [
     {
       question: 'Colorado?',
-      answer: 'Denver',
+      answer: 'foco',
       answerArray: ['foco', 'parker', 'springs']
     },
     {
       question: 'Wyoming?',
       answer: 'Cheyenne',
-      answerArray: ['douglas', 'laramie']
+      answerArray: ['douglas', 'laramie', 'cheyenne']
     }
   ];
 
@@ -46,7 +48,7 @@ $(document).ready(function() {
       $('.question').append(newQuestion);
       for (var j = 0; j < questions[i]['answerArray'].length; j++) {
         var ansDiv = $(
-          `<div class='option'>${questions[i]['answerArray'][j]}</div>`
+          `<div id=${i} class='option'>${questions[i]['answerArray'][j]}</div>`
         );
         $(`.${i}`).append(ansDiv);
       }
@@ -59,8 +61,16 @@ $(document).ready(function() {
     }
 
     $('.option').on('click', function() {
-      //console.log($(this).html());
+      console.log($(this).attr('id'));
+
+      // var userGuess =
+      // if (userGuess === )
     });
-    $();
+    // $('.option').on('click', function() {
+    //   //console.log($(this).html());
+    //    var userSelected = $(this).html();
+
+    //    if(userSelected.indexOf(questions))
+    // );
   });
 });
