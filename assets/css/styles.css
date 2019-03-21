@@ -1,0 +1,31 @@
+.container {
+  text-align: center;
+}
+
+.mainArea {
+  display: inline-block;
+  margin-top: 10rem;
+  background: greenyellow;
+  width: 50rem;
+  height: 20rem;
+}
+
+.mainArea > button {
+  margin-top: 7rem;
+}
+
+.mainArea > h2 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.mainDiv {
+  display: none;
+  height: inherit;
+  width: inherit;
+  /* background: red; */
+}
+
+p {
+  margin: 2rem 0 2rem 0;
+}
