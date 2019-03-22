@@ -16,20 +16,25 @@
 */
 
 $(document).ready(function() {
-  var correct = 0;
-  var wrong = 0;
+  var correct, wrong, questions, questionID, userGuess, banner;
+
+  correct = 0;
+  wrong = 0;
+  unanswered = 0;
   //   var questions;
 
-  var questions = [
+  questions = [
     {
-      question: 'Colorado?',
-      answer: 'foco',
-      answerArray: ['foco', 'parker', 'springs']
+      question:
+        "In The Three Musketeers, three musketeers were D'Artagnan, Athos & Porthos. Who was the fourth musketeer?",
+      answer: 'Aramis',
+      answerArray: ['de Tréville', 'Planchet', 'Aramis']
     },
     {
-      question: 'Wyoming?',
-      answer: 'Cheyenne',
-      answerArray: ['douglas', 'laramie', 'cheyenne']
+      question:
+        'Which country was the ship that rescued Robinson Crusoe heading to?',
+      answer: 'Brazil',
+      answerArray: ['India', 'United Kingdon', 'Brazil', 'Argentina']
     }
   ];
 
@@ -37,6 +42,8 @@ $(document).ready(function() {
   // start game
 
   $('.start').on('click', function() {
+    setTimeout(timeUp, 10000);
+
     // get rid of the button
     $(this).css('display', 'none');
     // and show the questions div
@@ -44,7 +51,11 @@ $(document).ready(function() {
 
     // create a paragraph level block element? and append it to the questions div
     for (var i = 0; i < questions.length; i++) {
-      var newQuestion = $(`<div class=${i}> ${questions[i].question} </div>`);
+      var newQuestion = $(
+        `<div class='${i} options'><p><em>${
+          questions[i].question
+        }</em></p></div>`
+      );
       $('.question').append(newQuestion);
       for (var j = 0; j < questions[i]['answerArray'].length; j++) {
         var ansDiv = $(
@@ -52,25 +63,26 @@ $(document).ready(function() {
         );
         $(`.${i}`).append(ansDiv);
       }
-
-      //with each loop, generate a paragraph block which contains the question
-      // var newQuestion = $(`<p> ${questions[i].question} </p>`);
-
-      //append it to the questionsDiv
-      //$('.questionsDiv').append(newQuestion);
     }
 
     $('.option').on('click', function() {
-      console.log($(this).attr('id'));
+      questionID = $(this).attr('id');
+      userGuess = $(this).html();
 
-      // var userGuess =
-      // if (userGuess === )
+      if (userGuess === questions[questionID].answer) {
+        correct++;
+      } else {
+        wrong++;
+      }
     });
-    // $('.option').on('click', function() {
-    //   //console.log($(this).html());
-    //    var userSelected = $(this).html();
+    function timeUp() {
+      $('.mainDiv').css('display', 'none');
+      $('.resultDiv').css('display', 'inline');
+      banner = $('<h3>').text("Time's Up!");
+      $('.resultDiv').append(banner);
 
-    //    if(userSelected.indexOf(questions))
-    // );
+      $('.resultDiv').append(`<p>Correct: ${correct}</p>`);
+      $('.resultDiv').append(`<p>Wrong: ${wrong}</p>`);
+    }
   });
 });

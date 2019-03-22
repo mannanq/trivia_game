@@ -26,6 +26,30 @@
   /* background: red; */
 }
 
-p {
-  margin: 2rem 0 2rem 0;
+.option {
+  display: inline-block;
+  margin: 0 1rem 0 1rem;
+}
+
+.option:hover {
+  opacity: 0.2;
+}
+
+.options {
+  margin-bottom: 1rem;
+}
+
+.question > p {
+  margin-bottom: 0;
+}
+
+.resultDiv {
+  display: none;
+  width: 100px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.resultDiv > h3 {
+  width: auto;
 }
